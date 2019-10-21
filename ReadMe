@@ -1,0 +1,100 @@
+一、添加core包
+1、根目录build添加maven依赖
+   allprojects {
+       repositories {
+           google()
+           jcenter()
+           maven {
+               url 'http://10.3.4.126:8081/repository/maven-releases'
+           }
+           maven{
+               url 'http://59.61.216.123:14080/content/repositories/android/'
+           }
+           maven { url "https://jitpack.io" }
+           maven { url 'https://dl.bintray.com/umsdk/release' }
+           maven { url "https://dl.bintray.com/thelasterstar/maven/" }
+       }
+   }
+2、 添加core依赖
+   api 'com.convenient.qd:core:1.0.0'
+
+3、统一lib
+
+    compileSdkVersion: 27,
+    buildToolsVersion: "28.0.3",
+    minSdkVersion    : 18,
+    targetSdkVersion : 27,
+
+   libsVersion = [
+               // App dependencies version
+               supportLibraryVersion = "27.1.1",
+               constraint_layout='1.1.2',
+               glideVersion = "4.9.0",
+               loggerVersion = "1.15",
+               gsonVersion = "2.8.5",
+               butterknife = "8.8.1",
+               butterknife_compiler = "9.0.0",
+               retrofit = "2.4.0",
+               rxjava = "2.1.0",
+               rxjava_android = "2.1.0",
+               rxlifecycle = "2.1.0",
+               rxlifecycle_components = "2.1.0",
+               dagger_compiler = "2.11",
+               dagger = "2.11",
+               greenDao = "3.2.2",
+               arouter_api = "1.5.0",
+               arouter_compiler = "1.2.2",
+               transformations = "4.0.1",
+               rxjava_adapter = "2.3.0",
+               gson_converter = "2.3.0",
+               scalars_converter = "2.3.0",
+               rxpermission = "0.10.2",
+               eventbus = "3.1.1",
+               support_v4 = "27.1.1",
+               okhttp3 = "3.10.0",
+               multidex="1.0.2",
+               utilcode="1.25.9",
+               umsdk_commom="2.0.0",
+               umsdk_analytics="8.0.0",
+               umsdk_push="5.0.2",
+               glide_transformations="3.3.0",
+               immersionbar="3.0.0-beta02",
+               xpopup="1.7.1",
+               SocialHelper="v1.2.2",
+               circleimageview="2.1.0",
+               library="2.4.0",
+               permission="2.0.0-rc12",
+               okhttputils="2.6.2",
+       ]
+    api 'com.amap.api:location:4.1.0'
+    libs/alipaySdk-20180601.jar
+    libs/xUtils-2.6.5.jar
+    libs/dbhelper-1.0.1.jar
+
+二、注意事项
+1、组件间通信跳转使统一使用core包下 ARouterUtils + ARouterConstant。组件内跳转不需要使用。
+
+2、组件全局application的实现和数据的初始化
+采用类似于Glide在Manifest初始化配置的方式来初始化各个组件的Application
+（1）、 public class DemoApp implements IAppLife
+（2）、组件Manifest中application的全局配置
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="coband.bsit.com.demo" >
+
+      <meta-data
+          android:name="coband.bsit.com.demo.app.DemoApp"
+          android:value="IModuleConfig" />
+  </manifest>
+
+3、组件资源命名 统一使用 module_资源名
+
+4、图片加载统一使用ImageLoader
+
+5、EventBus统一使用 EventBusUtils+EventCode
+
+6、不建议组件使用butterknife
+
+7、界面适配统一使用xhdpi
+   尺寸标准：375dp * 667dp
+
+8、所有业务逻辑写在module下

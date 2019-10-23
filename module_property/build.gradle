@@ -32,5 +32,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     api 'com.convenient.qd:core:1.0.0'
+//    api 'com.convenient.qd:pay:1.0.0'
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
 }

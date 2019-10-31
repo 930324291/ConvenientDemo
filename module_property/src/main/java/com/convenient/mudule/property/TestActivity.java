@@ -12,6 +12,7 @@ import com.convenient.qd.core.base.mvp.BaseActivity;
 import com.convenient.qd.core.base.mvp.BasePresenter;
 import com.convenient.qd.core.bean.BaseResBean;
 import com.convenient.qd.core.bean.UserInfo;
+import com.convenient.qd.core.constant.Constant;
 import com.convenient.qd.core.net.BaseHttpObserver;
 import com.convenient.qd.core.user.UserDBHelper;
 import com.convenient.qd.core.utils.SocialUtil;
@@ -66,6 +67,9 @@ public class TestActivity extends BaseActivity {
     }
 
     private void loadTestData(){
+        // 网络请求日志开关
+//        Constant.DEBUG = BuildConfig.DEBUG;
+
         // 统一获取登录用户信息
         UserInfo userInfo = UserDBHelper.getInstance().getUserInfo();
 //        if(userInfo == null){

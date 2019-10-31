@@ -15,5 +15,5 @@ public class DemoApi {
     /**
      * 获取首页数据
      */
-    public static final String GetHomeData = "/v2/app/home";
+    public static final String GetHomeData = "/v3/app/home";
 }

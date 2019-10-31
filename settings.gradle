@@ -1,1 +1,1 @@
-include ':app', ':module_property', ':SubModuleDemo'
+include ':app', ':module_property'

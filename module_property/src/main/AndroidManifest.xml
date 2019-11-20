@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.convenient.mudule.property" >
 
-    <application>
+    <application
+        >
 
         <activity android:name=".TestActivity">
             <intent-filter>

@@ -98,3 +98,15 @@
    尺寸标准：375dp * 667dp
 
 8、所有业务逻辑写在module下
+
+9、唤起微信、支付宝支付：PayHelper.getInstance().navigation(gxSportPayReq.getTradeId(), "WXPAY_AP", new IPayCallBack() {
+                                 @Override
+                                 public void onSuccess(String payWay) {
+                                     LogUtils.e(payWay);
+                                 }
+
+                                 @Override
+                                 public void onFailure(int code, String msg) {
+                                     LogUtils.e(code);
+                                 }
+                             });

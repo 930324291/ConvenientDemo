@@ -16,7 +16,7 @@
        }
    }
 2、 添加core依赖
-   api 'com.convenient.qd:core:1.0.2'
+   api 'com.convenient.qd:core:1.0.7'
 
 3、统一lib
 
@@ -94,9 +94,6 @@
 
 6、不建议组件使用butterknife
 
-7、界面适配统一使用xhdpi
-   尺寸标准：375dp * 667dp
-
 8、所有业务逻辑写在module下
 
 9、唤起微信、支付宝支付：PayHelper.getInstance().navigation(gxSportPayReq.getTradeId(), "WXPAY_AP", new IPayCallBack() {
@@ -110,3 +107,37 @@
                                      LogUtils.e(code);
                                  }
                              });
+
+二、界面适配
+  1、界面适配统一使用xhdpi ，尺寸标准：375dp * 667dp
+  2、若没有继承core里的BaseActivity，在自己的applicaton和activity里面添加如下代码 ：
+
+（1）、application初始化：
+  private void initScreenAdapt() {
+          ScreenAdaptManager.newBuild().designedHeight(667).designedWidth(375).build();
+  }
+
+（2）、BaseActivity继承IAdaptScreen
+
+       @Override
+       public boolean isBaseOnWidth() {
+           return true;
+       }
+
+
+       @Override
+       public int getScreenSize() {
+           return 375;
+       }
+
+
+       @Override
+       public boolean cancelAdapt() {
+           return false;
+       }
+
+
+       @Override
+       public boolean needResetAdapt() {
+           return getScreenSize() != (isBaseOnWidth() ? SaveUtils.getInt(ScreenAdaptManager.DESIGNED_WIDTH, 0):SaveUtils.getInt(ScreenAdaptManager.DESIGNED_HEIGHT, 0));
+       }
